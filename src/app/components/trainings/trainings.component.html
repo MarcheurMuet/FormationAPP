@@ -1,0 +1,78 @@
+<div
+  style="
+    max-width: 80%;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+  "
+>
+  <h3 class="text-center" style="margin-bottom: 10px;">Nos formations à vendre</h3>
+
+  <hr style="border-top: 2px solid black; margin-bottom: 20px;" />
+
+  <ng-container *ngIf="listTrainings; else loading">
+    <table
+      class="table table-striped"
+      style="table-layout: fixed; width: 100%; border-collapse: collapse"
+    >
+      <thead style="border-bottom: 2px solid #ccc">
+        <tr>
+          <th style="width: 5%">ID</th>
+          <th style="width: 10%">NOM</th>
+          <th style="width: 25%">DESCRIPTION</th>
+          <th>PRIX</th>
+          <th>QUANTITY</th>
+          <th>PANIER</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let training of listTrainings">
+          <td>{{ training.id }}</td>
+          <td>{{ training.name }}</td>
+          <td class="text-truncate" style="max-width: 200px; overflow: hidden">
+            {{ training.description }}
+          </td>
+          <td>{{ training.price | currencyAfter }}</td>
+          <td>
+            <input
+              type="number"
+              name="quantity"
+              class="form-control form-control-sm"
+              style="width: 80px"
+              [(ngModel)]="training.quantity"
+            />
+          </td>
+          <td>
+            <button
+              class="btn btn-primary btn-sm"
+              (click)="onAddToCart(training)"
+            >
+              <i class="fas fa-cart-plus"> Ajouter</i>
+            </button>
+          </td>
+          <td>
+            <button
+              *ngIf="authService.isAdmin()"
+              class="btn btn-danger btn-sm"
+              (click)="deleteOneTraining(training)"
+            >
+              <i class="fas fa-trash-alt"> Supprimer</i>
+            </button>
+          </td>
+          <td>
+            <button
+              *ngIf="authService.isAdmin()"
+              class="btn btn-warning btn-sm"
+              (click)="goToUpdate(training)"
+            >
+              <i class="fas fa-edit"> Mise à jour</i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  <ng-template #loading>
+    <div class="text-center">Loading...</div>
+  </ng-template>
+</div>

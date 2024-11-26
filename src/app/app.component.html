@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-sm navbar-light" style="background-color: #3498db;">
+  <a class="navbar-brand" href="#" >TRAININGS</a>
+
+  <div class="navbar-logo">
+    <img src="../assets/black_on_trans.png" alt="Logo" class="logo">
+  </div>
+
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/trainings" [routerLinkActive]="['is-active']">Formations</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/cart" [routerLinkActive]="['is-active']" >Contenu du panier</a>
+    </li>
+
+    <li class="nav-item">
+      <a *ngIf="authService.isLogin() && authService.isAdmin()" class="nav-link"  routerLink="/training" [routerLinkActive]="['is-active']">
+        Ajouter une formation</a
+      >
+    </li>
+
+    <li class="nav-item">
+      <a *ngIf="authService.isAdmin()" class="nav-link"  routerLink="/admin" [routerLinkActive]="['is-active']">
+       Administration</a
+      >
+    </li>
+  </ul>
+
+  <ul class="navbar-nav ms-auto">
+    <li class="nav-item">
+      <a
+        *ngIf="authService.isLogin()"
+        class="nav-link"
+        routerLink="/trainings"
+        (click)="onLogout()"
+        >Déconnexion</a
+      >
+    </li>
+    <li class="nav-item">
+      <a *ngIf="!authService.isLogin()" class="nav-link" routerLink="/connexion"
+        >Connexion</a
+      >
+    </li>
+  </ul>
+</nav>
+
+<router-outlet></router-outlet>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<lib-toastify-toast-container> </lib-toastify-toast-container>

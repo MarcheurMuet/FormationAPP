@@ -1,0 +1,11 @@
+<div class="modal-backdrop">
+    <div class="modal-overlay">
+        <div class="modal-header">
+            <h5>{{title}}</h5>
+            <button class="close-btn" (click)="closeModal()">x</button>
+        </div>
+        <div class="modal-body">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>

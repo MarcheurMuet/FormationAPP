@@ -1,0 +1,37 @@
+<div class="justify-content-center align-items-center m-5">
+  <div class="card" style="width: 20rem">
+    <div class="card-body">
+      <h5 class="card-title text-center">Authentification</h5>
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm)">
+        <div class="form-group">
+          <label for="email">Mail :</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            formControlName="email"
+            placeholder="Entrez votre email"
+          />
+        </div>
+        <div class="form-group mt-2">
+          <label for="password">Mot de passe :</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            formControlName="password"
+            placeholder="Entrez votre mot de passe"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block mt-2">
+          Se connecter
+        </button>
+        <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+          <p>
+            {{ errorMessage }}
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

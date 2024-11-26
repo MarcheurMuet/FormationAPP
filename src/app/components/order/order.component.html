@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="border">
+        <table class="table table-bordered">
+          <thead>
+            <tr class="bg-light">
+              <th colspan="2">Récap de votre commande</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="width: 50%;">
+                <h4>Informations du Client</h4>
+                <p style="border-bottom: 1px solid #ccc;"><strong>Nom du Client :</strong> {{ customer.lastname }}</p>
+                <p style="border-bottom: 1px solid #ccc;"><strong>Prénom du Client :</strong> {{ customer.firstname }}</p>
+                <p style="border-bottom: 1px solid #ccc;"><strong>Adresse Client :</strong> {{ customer.adress }}</p>
+                <p style="border-bottom: 1px solid #ccc;"><strong>Tel Client :</strong> {{ customer.mobileNumber }}</p>
+                <p style="border-bottom: 1px solid #ccc;"><strong>Email :</strong> {{ customer.mail }}</p>
+                <p style="border-bottom: 1px solid #ccc;"><strong>Numéro de la commande :</strong> ???</p>
+                <p style="border-bottom: 1px solid #ccc;"><strong>Date de la commande :</strong> {{ orderDate }}</p>
+              </td>
+    
+              <td style="width: 50%;">
+                <h4>Panier</h4>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Nom</th>
+                      <th>Quantité</th>
+                      <th>Prix Unitaire</th>
+                      <th>Prix Total </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of cart; let i = index">
+                      <td>{{ i + 1 }}</td>
+                      <td>{{ item.name }}</td>
+                      <td>{{ item.quantity }}</td>
+                      <td>{{ item.price | currencyAfter }}</td>
+                      <td>{{ (item.price * item.quantity) | currencyAfter }}</td>
+                    </tr>
+                    <tr>
+                      <td colspan="4"><strong>Total</strong></td>
+                      <td><strong>{{ total | currencyAfter }}</strong></td>
+                    </tr>
+                  </tbody>
+                </table>
+    
+                <button class="btn btn-success w-100" (click)="confirmOrder()">Confirmer la commande</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</div>
+ <app-modal-order *ngIf="showModal"
+ [title]="modalTitle"
+ (close)="onModalClose()">
+<p>{{modalContent}}</p>
+<p>Montant total : {{modalData | currencyAfter}}</p>
+</app-modal-order>

@@ -1,0 +1,40 @@
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Pour qui voulez-vous passez commande : </h2>
+  
+    <form [formGroup]="myForm" (ngSubmit)="onSaveCustomer(myForm)" class="border p-4 rounded shadow">
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="lastname" class="form-label">Nom :</label>
+            <input type="text" id="lastname" formControlName="lastname" class="form-control" placeholder="Entrez votre nom" required>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="firstname" class="form-label">Prénom :</label>
+            <input type="text" id="firstname" formControlName="firstname" class="form-control" placeholder="Entrez votre prénom" required>
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-group mb-3">
+        <label for="adress" class="form-label">Adresse :</label>
+        <input type="text" id="adress" formControlName="adress" class="form-control" placeholder="Entrez votre adresse" required>
+      </div>
+  
+      <div class="form-group mb-3">
+        <label for="mobile" class="form-label">Téléphone :</label>
+        <input type="text" id="mobile" formControlName="mobile" class="form-control" placeholder="Entrez votre numéro de téléphone" required>
+      </div>
+  
+      <div class="form-group mb-4">
+        <label for="mail" class="form-label">Mail :</label>
+        <input type="email" id="mail" formControlName="mail" class="form-control" placeholder="Entrez votre adresse mail" required>
+      </div>
+  
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary btn-lg">Next</button>
+      </div>
+    </form>
+  </div>
+  
