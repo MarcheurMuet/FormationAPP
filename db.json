@@ -51,12 +51,6 @@
       "password": "$2a$10$/iOz2Z8zt9h1krlYtxHuneyBW/R4C5LzX30uGHtupj73l44rgyu0y",
       "roles": "USER",
       "id": 2
-    },
-    {
-      "email": "sidledu30@gmail.com",
-      "password": "$2a$10$gYxPuJw.6q9dLdQZKMz3je69kp5PpPly4DSvZBf5caPKUQjIX2WVq",
-      "roles": "ADMIN",
-      "id": 3
     }
   ]
 }

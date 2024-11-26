@@ -1,26 +1,33 @@
+
+.nav-link{
+  color: white;
+}
+
+.navbar-brand{
+  color: white;
+}
+
 .is-active {
-    font-weight: bold; 
-    color: white; 
-    background-color: #2980b9; 
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration:underline;
+    text-shadow: #000 1px 1px;
+    color: #0b6112;
   }
-  
-  .is-active .nav-link {
-    text-decoration: underline;
-  }
+
   .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  
+
   .navbar-logo {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
   }
-  
+
   .logo {
-    height: 50px;  
+    height: 50px;
     width: auto;
   }
-  
