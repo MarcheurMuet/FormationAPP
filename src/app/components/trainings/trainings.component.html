@@ -1,10 +1,5 @@
 <div
-  style="
-    max-width: 80%;
-    margin: 20px auto;
-    border: 1px solid #ccc;
-    padding: 10px;
-  "
+  style="max-width: 70%; margin: 20px auto; border: 1px solid #ccc; padding: 10px;"
 >
   <h3 class="text-center" style="margin-bottom: 10px;">Nos formations à vendre</h3>
 
@@ -19,10 +14,11 @@
         <tr>
           <th style="width: 5%">ID</th>
           <th style="width: 10%">NOM</th>
-          <th style="width: 25%">DESCRIPTION</th>
-          <th>PRIX</th>
-          <th>QUANTITY</th>
-          <th>PANIER</th>
+          <th style="width: 20%">DESCRIPTION</th>
+          <th style="width: 15%;">PRIX UNITAIRE</th>
+          <th style="width: 10%;">QUANTITÉ</th>
+          <th style="width: 15%;">MONTANT TOTAL</th> 
+          <th style="width: 15%;">PANIER</th>
         </tr>
       </thead>
       <tbody>
@@ -40,32 +36,34 @@
               class="form-control form-control-sm"
               style="width: 80px"
               [(ngModel)]="training.quantity"
+              (ngModelChange)="updateTotal(training)"
             />
           </td>
           <td>
+            {{ training.quantity * training.price | currencyAfter }}
+          </td>
+          <td class="d-flex justify-content-between">
             <button
-              class="btn btn-primary btn-sm"
+              class="btn btn-primary btn-sm rounded-pill me-1"
               (click)="onAddToCart(training)"
             >
-              <i class="fas fa-cart-plus"> Ajouter</i>
+              <i class="fas fa-cart-plus"> </i>
             </button>
-          </td>
-          <td>
+
             <button
               *ngIf="authService.isAdmin()"
-              class="btn btn-danger btn-sm"
+              class="btn btn-danger btn-sm rounded-pill me-1"
               (click)="deleteOneTraining(training)"
             >
-              <i class="fas fa-trash-alt"> Supprimer</i>
+              <i class="fas fa-trash-alt"> </i>
             </button>
-          </td>
-          <td>
+
             <button
               *ngIf="authService.isAdmin()"
-              class="btn btn-warning btn-sm"
+              class="btn btn-warning btn-sm rounded-pill me-1"
               (click)="goToUpdate(training)"
             >
-              <i class="fas fa-edit"> Mise à jour</i>
+              <i class="fas fa-edit"></i>
             </button>
           </td>
         </tr>

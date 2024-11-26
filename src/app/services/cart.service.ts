@@ -30,10 +30,20 @@ export class CartService {
     }
   }
 
-   addTraining(training : Training){
-    this.cart.set(training.id, training);
-    this.saveCart();
-   }
+  addTraining(training: Training) {
+    if (this.cart.has(training.id)) {
+      let existingTraining = this.cart.get(training.id);
+      if (existingTraining) {
+        existingTraining.quantity++; 
+        this.cart.set(training.id, existingTraining); 
+      }
+    } else {
+      training.quantity = 1;
+      this.cart.set(training.id, training);
+    }
+    this.saveCart(); 
+  }
+  
 
    saveCustomer(customer : Customer){
     localStorage.setItem('customer', JSON.stringify(customer));

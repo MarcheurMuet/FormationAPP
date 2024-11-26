@@ -74,4 +74,10 @@ export class TrainingsComponent implements OnInit {
   addInfoToastErrorQuantityTraining() {
     this._toastService.error('La quantité doit être supérieur à 0');
   }
+
+  updateTotal(training: Training): void {
+    if (training.quantity < 0) {
+      training.quantity = 0;
+    }
+  }
 }
