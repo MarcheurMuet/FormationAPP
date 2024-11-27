@@ -7,6 +7,12 @@
   color: white;
 }
 
+.logo {
+  width: 55px;
+  height: 55px;
+  margin-top: 30px;
+}
+
 .is-active {
     font-weight: bold;
     text-transform: uppercase;
@@ -25,9 +31,4 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-  }
-
-  .logo {
-    height: 50px;
-    width: auto;
   }
