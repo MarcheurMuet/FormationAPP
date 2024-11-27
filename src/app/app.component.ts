@@ -25,4 +25,9 @@ export class AppComponent implements OnInit {
     this.router.navigateByUrl('trainings');
     console.log('logout');
   }
+
+    
+  isHomePage(): boolean {
+    return this.router.url === '/home';
+  }
 }

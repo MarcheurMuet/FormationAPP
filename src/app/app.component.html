@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-sm navbar-light" style="background-color: #A353D8;">
-  <a class="navbar-brand" href="#" >TRAININGS</a>
+<nav *ngIf="!isHomePage()" class="navbar navbar-expand-sm navbar-light" style="background-color: #3498db;">
+  <a class="navbar-brand" href="#" routerLink="/home" >TRAININGS</a>
 
   <div class="navbar-logo">
     <img src="../assets/black_on_trans.png" alt="Logo" class="logo">
@@ -13,7 +13,6 @@
     <li class="nav-item">
       <a class="nav-link" routerLink="/cart" [routerLinkActive]="['is-active']" >Contenu du panier</a>
     </li>
-
     <li class="nav-item">
       <a *ngIf="authService.isLogin() && authService.isAdmin()" class="nav-link"  routerLink="/training" [routerLinkActive]="['is-active']">
         Ajouter une formation</a
@@ -44,6 +43,8 @@
     </li>
   </ul>
 </nav>
+
+
 
 <router-outlet></router-outlet>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">

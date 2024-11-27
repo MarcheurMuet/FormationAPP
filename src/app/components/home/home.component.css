@@ -1,0 +1,27 @@
+.btn-purple {
+    background-color: #8e44ad; 
+    color: white; 
+    font-size: 1.5rem;
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    transition: background-color 0.3s ease; 
+    min-width: 120px; 
+  }
+  
+  .btn-purple:hover {
+    background-color: #9b59b6; 
+  }
+  
+  .position-absolute .d-flex {
+    justify-content: flex-start; 
+  }
+  
+  .position-absolute .d-flex p {
+    margin: 0;
+  }
+  
+  .position-absolute .d-flex button {
+    margin-left: 10px;
+  }
+  

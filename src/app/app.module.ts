@@ -17,7 +17,8 @@ import { AdminComponent } from './components/admin/admin.component';
 import { UserComponent } from './components/user/user.component';
 import { TrainingComponent } from './components/training/training.component';
 import { CurrencyAfterPipe } from './currency-after.pipe';
-import { ToastService, AngularToastifyModule } from 'angular-toastify'; 
+import { ToastService, AngularToastifyModule } from 'angular-toastify';
+import { HomeComponent } from './components/home/home.component'; 
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { ToastService, AngularToastifyModule } from 'angular-toastify';
     OrderComponent, 
     ModalOrderComponent, 
     ConnexionComponent, AdminComponent, UserComponent, TrainingComponent, CurrencyAfterPipe, 
-    CurrencyAfterPipe  
+    CurrencyAfterPipe, HomeComponent  
 
   ],
   imports: [
