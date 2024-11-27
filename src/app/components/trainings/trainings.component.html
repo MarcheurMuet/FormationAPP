@@ -17,7 +17,7 @@
           <th style="width: 20%">DESCRIPTION</th>
           <th style="width: 15%;">PRIX UNITAIRE</th>
           <th style="width: 10%;">QUANTITÉ</th>
-          <th style="width: 15%;">MONTANT TOTAL</th> 
+          <th style="width: 15%;">MONTANT TOTAL</th>
           <th style="width: 15%;">PANIER</th>
         </tr>
       </thead>
@@ -31,6 +31,8 @@
           <td>{{ training.price | currencyAfter }}</td>
           <td>
             <input
+              min="0"
+              max="20"
               type="number"
               name="quantity"
               class="form-control form-control-sm"
