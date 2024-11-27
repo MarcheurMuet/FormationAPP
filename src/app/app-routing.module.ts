@@ -16,11 +16,7 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'customer', component: CustomerComponent },
   { path: 'order', component: OrderComponent },
-  {
-    path: 'training/:trainingId',
-    component: TrainingComponent,
-    canActivate: [AdminGuard],
-  },
+  {path: 'training/:trainingId',component: TrainingComponent,canActivate: [AdminGuard],},
   { path: 'training', component: TrainingComponent, canActivate: [AdminGuard] },
   { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
   { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
