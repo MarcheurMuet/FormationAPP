@@ -41,18 +41,21 @@ export class CartService {
    * Ajoute un article dans le panier.
    * @param training L'article à ajouter ou mettre à jour dans le panier.
    */
-  addTraining(training: Training) {
-    if (this.cart.has(training.id)) {
-      const existingTraining = this.cart.get(training.id);
-      if (existingTraining) {
-        existingTraining.quantity += training.quantity;
-        this.cart.set(training.id, existingTraining);
-      }
-    } else {
-      this.cart.set(training.id, training);
+
+addTraining(training: Training) {
+  if (this.cart.has(training.id)) {
+    const existingTraining = this.cart.get(training.id);
+    if (existingTraining) {
+      existingTraining.quantity += training.quantity; 
+      this.cart.set(training.id, existingTraining);
     }
-    this.saveCart();
+  } else {
+    this.cart.set(training.id, training);
   }
+  this.saveCart();
+}
+
+  
 
   /**
    * Sauvegarde les informations du client dans le localStorage.
