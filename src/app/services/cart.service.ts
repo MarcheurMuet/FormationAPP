@@ -62,14 +62,13 @@ export class CartService {
     }
     else return undefined;
    }
-
-   getTotal() : number {
-    let amount : number = 0;
+   getTotal(): number {
+    let amount: number = 0;
     this.cart.forEach(training => {
-      amount += training.price * training.quantity;
+      amount += training.price * training.quantity; 
     });
     return amount;
-   }
+  }
 
    getCustomer() : Customer {
     let customer = localStorage.getItem('customer');

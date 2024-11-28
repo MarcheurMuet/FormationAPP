@@ -51,7 +51,7 @@ export class ConnexionComponent implements OnInit {
           if (this.authService.isAdmin()) {
             this.router.navigate(['/admin']);
           } else if (this.authService.isUser()) {
-            this.router.navigate(['/trainings']);
+            this.router.navigate(['/cart']);
           }
         } else {
           this.addInfoToastFailedConnexion();

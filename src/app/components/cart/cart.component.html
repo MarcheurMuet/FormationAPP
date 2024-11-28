@@ -1,41 +1,61 @@
-<div class="container mt-3 margin-top: 10 vh;">
+<div class="container mt-5">
   <ng-container *ngIf="cart?.length > 0;">
-    <table class="table table-striped table-hover table-bordered table-responsive-sm;">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th class="col-1">Quantity</th>
-          <th>Price</th>
-          <th class="col-2">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let training of cart">
-          <td>{{ training.id }}</td>
-          <td>{{ training.name }}</td>
-          <td>{{ training.quantity }}</td>
-          <td>{{ training.price * training.quantity | currencyAfter }}</td>
-          <td class="col-2">
-            <a class="btn btn-danger btn-sm" (click)="onRemoveFromCart(training)">Supprimer</a>
-          </td>
-        </tr>
-        <tr>
-          <td><strong>Total</strong></td>
-          <td></td>
-          <td></td>
-          <td>
-            <strong>{{ total | currencyAfter }}</strong>
-          </td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="card shadow-sm">
+      <div class="card-header">
+        <h4>Mon Panier</h4>
+      </div>
+      <div class="card-body">
+        <table class="table table-striped table-hover table-bordered table-sm">
+          <thead class="table-dark">
+            <tr>
+              <th style="width: 5%;">ID</th>
+              <th style="width: 5%;">Nom</th>
+              <th style="width: 25%;">Description</th>
+              <th style="width: 5%;">Quantité</th>
+              <th style="width: 20%;">Prix</th>
+              <th style="width: 10%;">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let training of cart">
+              <td>{{ training.id }}</td>
+              <td>{{ training.name }}</td>
+              <td>{{ training.description}}</td>
+              <td>{{ training.quantity }}</td>
+              <td>{{ training.price * training.quantity | currencyAfter }}</td>
+              <td>
+                <button class="btn btn-danger btn-sm" (click)="onRemoveFromCart(training)">
+                  <i class="bi bi-trash"></i> Supprimer
+                </button>
+              </td>
+            </tr>
+            <tr class="table-info">
+              <td colspan="4" class="text-end"><strong>Total</strong></td>
+              <td colspan="2">
+                <strong>{{ total | currencyAfter }}</strong>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="d-flex justify-content-between">
 
-    <button class="btn btn-success" (click)="order()">Commander</button>
+          <button class="btn btn-warning" (click)="clearCart()">
+            <i class="bi bi-x-circle"></i> Supprimer le Panier
+          </button>
+
+          <button class="btn btn-success" (click)="order()">
+            <i class="bi bi-check-circle"></i> Commander
+          </button>
+
+        
+        </div>
+      </div>
+    </div>
   </ng-container>
 
   <ng-container *ngIf="cart?.length === 0">
-    <p>Le panier est vide.</p>
+    <div class="alert alert-info" role="alert">
+      Le panier est vide.
+    </div>
   </ng-container>
 </div>

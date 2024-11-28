@@ -45,6 +45,16 @@ export class CartComponent implements OnInit {
     }
   }
 
+  
+  clearCart(): void {
+    if (confirm("Êtes-vous sûr de vouloir supprimer tous les articles du panier ?")) {
+      this.cartService.clearLocalStorage();
+      this.cart = this.cartService.getCart();
+      this.total = this.cartService.getTotal();
+      this._toastService.success('Le panier a été vidé');
+    }
+  }
+
   addInfoToastDeleteTraining() {
     this._toastService.success('Article supprimé');
   }

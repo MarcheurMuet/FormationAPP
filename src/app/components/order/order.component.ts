@@ -26,22 +26,23 @@ export class OrderComponent implements OnInit {
   ngOnInit(): void {
     this.customer = this.cartService.getCustomer(); 
     this.cart = this.cartService.getCart();
+    this.updateTotal();
+
   }
 
-  onOrder(){
-
+  updateTotal(): void {
+    this.total = this.cartService.getTotal(); 
   }
 
   confirmOrder(): void {
     this.modalData = this.cartService.getTotal();
-    this.showModal = true;
-      
+    this.showModal = true;      
   }  
 
   onModalClose(): void{
     this.showModal = false;
     this.cartService.clearLocalStorage();
-    this.router.navigateByUrl('');
+    this.router.navigateByUrl('/trainings');
     console.log("Back to the future ! ");
   }
 }

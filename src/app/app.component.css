@@ -17,11 +17,10 @@
 }
 
 .is-active {
-    font-weight: bold;
     text-transform: uppercase;
     text-decoration:underline;
     text-shadow: #000 1px 1px;
-    color: #0b6112;
+    color: white;
   }
 
   .navbar {

@@ -28,8 +28,13 @@ import { HomeComponent } from './components/home/home.component';
     CustomerComponent,    
     OrderComponent, 
     ModalOrderComponent, 
-    ConnexionComponent, AdminComponent, UserComponent, TrainingComponent, CurrencyAfterPipe, 
-    CurrencyAfterPipe, HomeComponent  
+    ConnexionComponent, 
+    AdminComponent, 
+    UserComponent, 
+    TrainingComponent, 
+    CurrencyAfterPipe, 
+    CurrencyAfterPipe,
+    HomeComponent  
 
   ],
   imports: [
