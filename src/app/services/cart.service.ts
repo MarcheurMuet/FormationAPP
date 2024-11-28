@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Training } from '../model/training.model';
-import { Customer } from '../model/customer.model'; 
+import { Customer } from '../model/customer.model';
 
 
 // Dire que c'est une injection et non une relation entre deux objets
-// Le cart service fait l'injection et pour qu'on ait accès aux dépendances (type singleton) 
+// Le cart service fait l'injection et pour qu'on ait accès aux dépendances (type singleton)
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  
+
   private cart : Map<number,Training>;
   private customer: Customer = {
     lastname: '',
@@ -24,7 +24,7 @@ export class CartService {
   constructor() {
     let cartP = localStorage.getItem(this.localStorageCart);
     if (cartP) {
-      this.cart = new Map(JSON.parse(cartP).map((item: any) => [item.id, item])); 
+      this.cart = new Map(JSON.parse(cartP).map((item: any) => [item.id, item]));
     } else {
       this.cart = new Map<number, Training>();
     }
@@ -32,18 +32,16 @@ export class CartService {
 
   addTraining(training: Training) {
     if (this.cart.has(training.id)) {
-      let existingTraining = this.cart.get(training.id);
+      const existingTraining = this.cart.get(training.id);
       if (existingTraining) {
-        existingTraining.quantity++; 
-        this.cart.set(training.id, existingTraining); 
+        existingTraining.quantity += training.quantity;
+        this.cart.set(training.id, existingTraining);
       }
     } else {
-      training.quantity = 1;
-      this.cart.set(training.id, training);
+      this.cart.set(training.id, training);}
+      this.saveCart();
     }
-    this.saveCart(); 
-  }
-  
+
 
    saveCustomer(customer : Customer){
     localStorage.setItem('customer', JSON.stringify(customer));
@@ -81,7 +79,7 @@ export class CartService {
 
    clearLocalStorage(){
     this.cart.clear();
-    localStorage.setItem(this.localStorageCart, ''); 
+    localStorage.setItem(this.localStorageCart, '');
 
    }
 
@@ -89,4 +87,11 @@ export class CartService {
     let order = { customer : this.getCustomer(), cart : this.getCart(), total : this.getTotal()};
     localStorage.setItem('order', JSON.stringify(order));
    }
+
+   getCartCount(): number {
+    let totalQuantity = 0;
+    this.cart.forEach(training => {
+      totalQuantity += training.quantity;
+    });
+    return totalQuantity;    }
 }

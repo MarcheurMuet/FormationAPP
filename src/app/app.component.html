@@ -11,7 +11,8 @@
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" routerLink="/cart" [routerLinkActive]="['is-active']" >Contenu du panier</a>
+       <a class="nav-link" routerLink="/cart" [routerLinkActive]="['is-active']">Contenu du panier<span *ngIf="panierCount > 0" class="badge ms-2;" style="background-color: rgb(226, 152, 13); color: white; margin-left: 2px;">{{ panierCount }}</span>
+      </a>
     </li>
     <li class="nav-item">
       <a *ngIf="authService.isLogin() && authService.isAdmin()" class="nav-link"  routerLink="/training" [routerLinkActive]="['is-active']">
@@ -28,14 +29,15 @@
 
   <ul class="navbar-nav ms-auto">
     <li class="nav-item">
-      <a
-        *ngIf="authService.isLogin()"
-        class="nav-link"
-        routerLink="/trainings"
-        (click)="onLogout()"
-        >Déconnexion</a
-      >
-    </li>
+      <span *ngIf="authService.isLogin()" class="nav-link">
+          {{ user?.email }}
+      </span>
+      </li>
+      <li class="nav-item">
+      <a *ngIf="authService.isLogin()" class="nav-link" (click)="onLogout()">
+          Déconnexion
+      </a>
+      </li>
     <li class="nav-item">
       <a *ngIf="!authService.isLogin()" class="nav-link" routerLink="/connexion"
         >Connexion</a
@@ -43,7 +45,6 @@
     </li>
   </ul>
 </nav>
-
 
 
 <router-outlet></router-outlet>

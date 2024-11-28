@@ -1,6 +1,8 @@
 
 .nav-link{
   color: white;
+  display: flex;
+    align-items: center;
 }
 
 .navbar-brand{
@@ -32,4 +34,9 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+  }
+
+  .navbar-nav {
+    display: flex;
+    align-items: center;
   }

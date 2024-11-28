@@ -1,3 +1,5 @@
+import { CartService } from 'src/app/services/cart.service';
+import { User } from './model/user.model';
 import { Component, OnInit } from '@angular/core';
 import { AuthenticateService } from './services/authenticate.service';
 import { Router } from '@angular/router';
@@ -8,16 +10,20 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'trainingS-front-app';
+  user: User | undefined;
 
   constructor(
     public authService: AuthenticateService,
-    private router: Router
+    private router: Router,
+    private cartService: CartService
   ) {}
 
   ngOnInit() {
     console.log(this.authService.getUser());
 
     console.log(this.authService.isAdmin());
+
+    this.user = this.authService.getUser();
   }
 
   onLogout() {
@@ -26,8 +32,10 @@ export class AppComponent implements OnInit {
     console.log('logout');
   }
 
-    
+
   isHomePage(): boolean {
     return this.router.url === '/home';
   }
+
+  get panierCount(): number {    return this.cartService.getCartCount();  }
 }
